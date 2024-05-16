@@ -12,7 +12,7 @@ const Alerta = withReactContent(Swal);
 const Admin = () => {
   const [Nombre, setNombre] = useState('');
   const [Correo, setCorreo] = useState('');
-  const [Usuario, setUsuario] = useState('');
+  const [Documento, setDocumento] = useState('');
   const [Clave, setClave] = useState('');
   const [rol, setRol] = useState('');
   const [id, setId] = useState('0');
@@ -50,7 +50,7 @@ const Admin = () => {
     Axios.post('http://localhost:3001/create', {
       Nombre: Nombre,
       Correo: Correo,
-      Usuario: Usuario,
+      Documento: Documento,
       Clave: Clave,
       rol: rol,
     })
@@ -81,7 +81,7 @@ const Admin = () => {
       id: id,
       Nombre: Nombre,
       Correo: Correo,
-      Usuario: Usuario,
+      Documento: Documento,
       rol: rol,
     })
       .then(() => {
@@ -147,7 +147,7 @@ const Admin = () => {
   const LimpiarCampos = () => {
     setNombre('');
     setCorreo('');
-    setUsuario('');
+    setDocumento('');
     setClave('');
     setRol('');
     setEditar(false);
@@ -157,8 +157,8 @@ const Admin = () => {
     setEditar(true);
     setNombre(val.Nombre);
     setCorreo(val.Correo);
-    setUsuario(val.Usuario);
-    setRol(val.rol);
+    setDocumento(val.Documento);
+    setRol(val.rolItem);
     setId(val.id);
   };
 
@@ -216,10 +216,10 @@ const Admin = () => {
             <input
               class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5'
               placeholder='Ingrese Una contraseña'
-              value={Usuario}
+              value={Documento}
               type='text'
               onChange={(event) => {
-                setUsuario(event.target.value);
+                setDocumento(event.target.value);
               }}
             />
           </div>
@@ -254,7 +254,6 @@ const Admin = () => {
 
           <div>
             <Select
-              isRequired
               label='Seleccione un rol'
               placeholder='roles'
               defaultSelectedKeys={['']}
@@ -328,7 +327,7 @@ const Admin = () => {
                 Correo
               </th>
               <th className='w-20 p-3 text-sm font-semibold  tracking-wide text-left'>
-                Usuario
+                Documento
               </th>
               <th className='w-20 p-3 text-sm font-semibold  tracking-wide text-center'>
                 Rol
@@ -354,7 +353,7 @@ const Admin = () => {
                     {val.Correo}
                   </td>
                   <td className='p-3 text-sm whitespace-nowrap font-bold  hover:underline'>
-                    {val.Usuario}
+                    {val.Documento}
                   </td>
                   <td className='p-3 text-sm whitespace-nowrap font-bold text-blue-500 hover:underline'>
                     <h1 className='bg-primary rounded text-white text-center'>
